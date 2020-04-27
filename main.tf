@@ -1,39 +1,30 @@
 //--------------------------------------------------------------------
 // Variables
-variable "computeinfra_clientId" {}
-variable "computeinfra_clientSecret" {}
-variable "computeinfra_hradwareType" {}
-variable "computeinfra_network" {}
-variable "region" {}
-variable "computeinfra_rgName" {}
-variable "computeinfra_subnet" {}
-variable "computeinfra_subscriptionId" {}
-variable "computeinfra_tenantId" {}
-variable "computeinfra_vmname" {}
-
-//-----------------------------------------------------------------
-
-provider "azurerm" {
-  subscription_id = "${var.computeinfra_subscriptionId}"
-  client_id       = "${var.computeinfra_clientId}"
-  client_secret   = "${var.computeinfra_clientSecret}"
-  tenant_id       = "${var.computeinfra_tenantId}"
-}
+variable "simplevm_clientId" {}
+variable "simplevm_clientSecret" {}
+variable "simplevm_hradwareType" {}
+variable "simplevm_network" {}
+variable "simplevm_region" {}
+variable "simplevm_rgName" {}
+variable "simplevm_subnet" {}
+variable "simplevm_subscriptionId" {}
+variable "simplevm_tenantId" {}
+variable "simplevm_vmname" {}
 
 //--------------------------------------------------------------------
 // Modules
-module "computeinfra" {
-  source  = "app.terraform.io/cmporg/computeinfra/azure"
-  version = "1.0.2"
+module "simplevm" {
+  source  = "app.terraform.io/custdemo/simplevm/azure"
+  version = "1.0.1"
 
-  clientId = "${var.computeinfra_clientId}"
-  clientSecret = "${var.computeinfra_clientSecret}"
-  hradwareType = "${var.computeinfra_hradwareType}"
-  network = "${var.computeinfra_network}"
-  region = "${var.region}"
-  rgName = "${var.computeinfra_rgName}"
-  subnet = "${var.computeinfra_subnet}"
-  subscriptionId = "${var.computeinfra_subscriptionId}"
-  tenantId = "${var.computeinfra_tenantId}"
-  vmname = "${var.computeinfra_vmname}"
+  clientId = "${var.simplevm_clientId}"
+  clientSecret = "${var.simplevm_clientSecret}"
+  hradwareType = "${var.simplevm_hradwareType}"
+  network = "${var.simplevm_network}"
+  region = "${var.simplevm_region}"
+  rgName = "${var.simplevm_rgName}"
+  subnet = "${var.simplevm_subnet}"
+  subscriptionId = "${var.simplevm_subscriptionId}"
+  tenantId = "${var.simplevm_tenantId}"
+  vmname = "${var.simplevm_vmname}"
 }
